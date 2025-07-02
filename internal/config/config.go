@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/ilyakaznacheev/cleanenv"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"time"
@@ -20,6 +21,10 @@ type HTTPServer struct {
 }
 
 func MustLoad() *Config {
+	if err := godotenv.Load(".env.local"); err != nil {
+		log.Fatalf("failed to load env: %v", err)
+	}
+
 	configPath := os.Getenv("CONFIG_PATH")
 	if configPath == "" {
 		log.Fatal("CONFIG_PATH is not set")
