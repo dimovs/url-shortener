@@ -1,7 +1,6 @@
 package main
 
 import (
-	_ "github.com/mattn/go-sqlite3"
 	"log/slog"
 	"os"
 	"url-shortener/internal/config"
